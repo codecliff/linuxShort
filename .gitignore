@@ -1,5 +1,6 @@
 # Ignore gedit backups
 *~
+src/*~
 
 #Local  readme file
 localreadme.txt
