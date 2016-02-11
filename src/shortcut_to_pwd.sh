@@ -79,7 +79,7 @@ myEOF
     else
     	echo "Error creating file!" 1>&2
     	return 1
-    fi
+    
 
     echo "Created shortcut  " $outFile".desktop"
     echo "pointing to " $curDir
