@@ -1,8 +1,11 @@
 # !/bin/bash
 
 # Windows Like Direcory Shortcuts for Linux Desktop
+# Basically, a useful launcher creator
 # With this , if we navigate one level up,
-# we go up from the original (Physiscal) directory, not the current location(Logical)
+# Pros- We go up from the original (Physiscal) directory, not the current location(Logical)
+# Deleteing the shortcut does not delete the orignal file 
+# Cons- you can't drag-drop a file on the lanuncher itself
 
 # Generates dektop launcher instead of symlink 
 # To be used with Desktop Envireonmnet and file Manamger like Nautilus or Thunar
@@ -33,7 +36,7 @@ mkShortcut(){
 
     curDir="$(pwd)"
     dirName="$(basename $(pwd))"
-    userHome=~	
+    userHome=~
 
 
 
@@ -43,7 +46,8 @@ mkShortcut(){
     #String values for Launcher
     fname=$dirName"_shortcut"
     outFile=$fname
-    if [ $1 == "D" ]; then       
+
+    if [[ $#>0 ]] && [ $1 = "D" ]; then       
 	outFile=$userHome"/Desktop/"$fname
     fi 
     
@@ -56,7 +60,7 @@ mkShortcut(){
     # xdg-open opens a file or URL in the user's preferred application
 
     # Important- Keep this left justified 	
-cat > $outFile".desktop" << myEOF
+cat > $outFile".desktop" <<myEOF
 #!/usr/bin/env xdg-open
 [Desktop Entry]
 Version=1.0
