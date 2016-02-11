@@ -16,11 +16,16 @@
 
 mkShortcut(){
 
-    if (( $# >0 )); then
-        echo  "usage: mkShortcut"
-        echo  "cd into a directory xyzDir and call this function : mkShortcut  "
+
+    if [[ $#>0 ]] && [ $1 != "D" ];then 
+        echo  "usage:(1) mkShortcut "
+	echo  "usage:(2) mkShortcut D "
+        echo  "cd into a directory xyzDir"
+	echo  "* call this function : mkShortcut  "
         echo  "This will create a new launcer file for your pwd xyzDir"
 	echo  "Copy this launcher to wherever"
+	echo  "* mkShortcut D places shortcut directly on the Desktop"
+
         return 1
     fi
 
@@ -28,21 +33,30 @@ mkShortcut(){
 
     curDir="$(pwd)"
     dirName="$(basename $(pwd))"
+    userHome=~	
 
-    echo $curDir
-    echo $dirName
+
+
+    # echo "userhome" $userHome
+    # echo $dirName
 
     #String values for Launcher
     fname=$dirName"_shortcut"
+    outFile=$fname
+    if [ $1 == "D" ]; then       
+	outFile=$userHome"/Desktop/"$fname
+    fi 
+    
     targetfolder=$curDir
     comment="shortcut to " $curDir
+
 
     
     # Create a  Launcher File with these contents
     # xdg-open opens a file or URL in the user's preferred application
 
     # Important- Keep this left justified 	
-cat > $fname".desktop" << myEOF
+cat > $outFile".desktop" << myEOF
 #!/usr/bin/env xdg-open
 [Desktop Entry]
 Version=1.0
@@ -55,15 +69,15 @@ Icon=inode-directory-symbolic, inode-x-generic-symbolic, inode-directory, inode-
 myEOF
 
     # Make launcher executable
-    if [ -f $fname".desktop" ]
+    if [ -f $outFile".desktop" ]
     then
-    	chmod a+rwx $fname".desktop"
+    	chmod a+rwx $outFile".desktop"
     else
-    	echo "Error creating file!"
-    	exit 1
+    	echo "Error creating file!" 1>&2
+    	return 1
     fi
 
-    echo "Created shortcut  " $fname".desktop"
+    echo "Created shortcut  " $outFile".desktop"
     echo "pointing to " $curDir
 
 } # end function
