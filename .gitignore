@@ -5,3 +5,6 @@ src/*~
 #Local  readme file
 localreadme.txt
 
+#all hidden files 
+.*
+
