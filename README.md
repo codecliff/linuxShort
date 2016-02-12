@@ -20,7 +20,7 @@ And this script tries to make it as simple it can be to create a launcher pointi
 
 ## Installation And Usage
 
-1. Download and save the file shortcut_to_pwd.sh, say, to directory ~/shorts/
+1. Download and save the file `shortcut_to_pwd.sh`, say, to directory `~/shorts/`
 2. Make the file executable 
        - `cd ~/shorts/`
        - `chmod +x shortcut_to_pwd.sh`
