@@ -1,7 +1,11 @@
 # LinuxShort
 
+https://github.com/codecliff/linuxShort
+
+
 ## Synopsis
-A simpler way to create desktop launchers for Directories. Desktop launchers are closest to windows Shortcut and do have some benefits over creating soft links in some cases. 
+A simpler way to create desktop launchers for Directories. Desktop launchers are closest to windows Shortcut and do have some benefits over creating soft links in some cases (See Motivation). 
+
 
 ## Usage (Concise)
 
@@ -14,11 +18,14 @@ Source this script on startup so these commands are always available.
      
 ## Motivation
 
-Soft links to directories create a secondary issue which is often a problem. The path for navigating these soft links is very different from the path for the original file. For instance, if you browse one level up from a soft link on Desktop, you will enter Desktop and not the hierarchy of directory your link is pointing to.
-Desktop launchers solve this problem. 
-And this script tries to make it as simple it can be to create a launcher pointing to a dictionary.   
+Soft links to directories create a secondary issue which is often a problem for me. The path for navigating these soft links is very different from the path for the original file. For instance, if you browse one level up from a soft link on Desktop, you will enter Desktop and not the hierarchy of directory your link is pointing to.  
+Desktop launchers solve this problem.   
+This set of scripts tries to make it as simple it can be to create a launcher pointing to a dictionary.   
+What's more, they also support drag and drop copying.  
 
 ## Installation And Usage
+
+### If you don't want drag and drop functionality or cannot install Zenity:
 
 1. Download and save the file `shortcut_to_pwd.sh`, say, to directory `~/shorts/`
 2. Make the file executable 
@@ -34,12 +41,28 @@ And this script tries to make it as simple it can be to create a launcher pointi
 6. (Optional but Recommended) Source this script on startup so these commands are always available. Add this line to `.bashrc` :
     - `source  ~/shorts/shortcut_to_pwd.sh`
 
+### Enhanced , with drag and drop enabled shortcuts (requires Zenity):
+
+1. Download and save the shell scripts , say, to directory `~/shorts/`
+2. Make the file executable 
+       - `cd ~/shorts/`
+       - `chmod +x *.sh`
+3. change to directory you want to create Shortcut for
+      - `cd ~/dirA/dirB`
+4. Source the script file        
+      - `source  ~/shorts/shortcut_to_pwd_dragdrop.sh`
+5. Create Shortcuts
+     - `mkShortcutDD `  : Creates a shortcut to the present directory inside itself( ~/dirA/dirB ). Copy it to wherever needed. 
+     - `mkShortcutDD D` : Places a shortcut to present directory (~/dirA/dirB) on the Desktop 
+6. (Optional but Recommended) Source this script on startup so these commands are always available. Add this line to `.bashrc` :
+    - `source  ~/shorts/shortcut_to_pwd_dragdrop.sh`
+
 
 ## Contributions
 
 Feel free to fork and improve. 
 
-Issue Tracker is here:  [Issues](/issues)
+Issue Tracker is here:  [Issues](https://github.com/codecliff/linuxShort/issues)
 
 
 ## License

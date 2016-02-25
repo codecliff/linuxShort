@@ -1,16 +1,15 @@
 # !/bin/bash
 
-# Windows Like Direcory Shortcuts for Linux Desktop
-# Basically, a useful launcher creator
-# With this , if we navigate one level up,
-# Pros- We go up from the original (Physiscal) directory, not the current location(Logical)
-# Deleteing the shortcut does not delete the orignal file 
-# Cons- you can't drag-drop a file on the lanuncher itself
+# Windows Like Direcory Shortcuts for Linux Desktop, with Drag and Drop copying
+# This is enhanced version of mkShortcut function (in this project)
+# Allows copying of files (and directories) to target directory by drag-dropping on shortcut icon
+# If no file is dropped, simply opens the target directory as before
 
-# Generates dektop launcher instead of symlink 
-# To be used with Desktop Envireonmnet and file Manamger like Nautilus or Thunar
+# Requires : Zenity (Gnome) 
+# Requires : shortParser.sh (in this project) same directory as this file 
 
-# Use gvfs-info shortcut_name for more info regarding generated launcer
+# Limitations: no overwriting 
+
 
 # (C) Rahul Singh https://github.com/codecliff/linuxShort 2016
 # License: Released under The MIT License (MIT)
@@ -21,8 +20,8 @@ mkShortcutDD(){
 
 
     if [[ $#>0 ]] && [ $1 != "D" ];then 
-        echo  "usage:(1) mkShortcut "
-	echo  "usage:(2) mkShortcut D "
+        echo  "usage:(1) mkShortcutDD "
+	echo  "usage:(2) mkShortcutDD D "
         echo  "cd into a directory xyzDir"
 	echo  "* call this function : mkShortcut  "
         echo  "This will create a new launcer file for your pwd xyzDir"

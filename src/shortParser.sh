@@ -1,5 +1,19 @@
 #!/bin/bash
 
+# This file is required for mkShortcutDD function to work
+# Must be in the same directory as the script with mkShortcutDD function 
+
+
+# Requires : Zenity (Gnome) 
+
+# Functionality: Copying files and directories, with a basic progress indicator
+# Limitations: no overwriting 
+
+
+# (C) Rahul Singh https://github.com/codecliff/linuxShort 2016
+# License: Released under The MIT License (MIT)
+
+
 
 
 # at least target directory must be given
