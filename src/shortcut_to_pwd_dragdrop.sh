@@ -16,7 +16,8 @@
 # License: Released under The MIT License (MIT)
 
 
-mkShortcut(){
+
+mkShortcutDD(){
 
 
     if [[ $#>0 ]] && [ $1 != "D" ];then 
@@ -36,7 +37,10 @@ mkShortcut(){
     curDir="$(pwd)"
     dirName="$(basename $(pwd))"
     userHome=~
-
+    
+    # http://stackoverflow.com/questions/59895/can-a-bash-script-tell-what-directory-its-stored-in 
+    # Dave Dopson 	
+    sourceDir="$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )"
 
 
     # echo "userhome" $userHome
@@ -65,7 +69,7 @@ cat > $outFile".desktop" <<myEOF
 Version=1.0
 Type=Application
 Terminal=false
-Exec=xdg-open  $targetfolder
+Exec=$sourceDir/shortParser.sh $targetfolder %f
 Name=$fname
 GenericName=$GenericName
 Comment="Created With LinuxShort"
@@ -79,9 +83,13 @@ myEOF
     else
     	echo "Error creating file!" 1>&2
     	return 1
-    fi
+    fi 		
+    
 
     echo "Created shortcut  " $outFile".desktop"
     echo "pointing to " $curDir
 
 } # end function
+
+
+
